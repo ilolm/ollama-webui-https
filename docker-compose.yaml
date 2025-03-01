@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+    ollama:
+        image: ollama/ollama
+        container_name: ollama
+        restart: unless-stopped
+        gpus: all
+        volumes:
+            - ollama:/root/.ollama
+
+    open-webui:
+        image: ghcr.io/open-webui/open-webui:main
+        container_name: open-webui
+        restart: unless-stopped
+        depends_on:
+            - ollama
+        volumes:
+            - open-webui:/app/backend/data
+        environment:
+            - OLLAMA_BASE_URL=http://ollama:11434
+
+    https-nginx:
+        image: nginx
+        container_name: https-reverse-proxy
+        restart: unless-stopped
+        depends_on:
+            - open-webui
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+            - ./ssl:/etc/nginx/ssl:ro
+
+volumes:
+    ollama:
+        external: true
+    open-webui:
+        external: true
