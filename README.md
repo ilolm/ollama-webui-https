@@ -1,6 +1,6 @@
 # ollama-webui-https
 
-This Docker Compose setup provides an isolated application with [`Ollama`](https://github.com/ollama/ollama), [`Open-WebUI`](https://github.com/open-webui/open-webui), and enables `Open-WebUI` to use **SSL (HTTPS)** via `Nginx`, as `Open-WebUI` does not support **SSL** natively.
+This Docker Compose setup provides an isolated application with [`Ollama`](https://github.com/ollama/ollama), [`Open-WebUI`](https://github.com/open-webui/open-webui), and enables `Open-WebUI` to use **SSL (HTTPS)** via `Nginx` reverse proxy, as `Open-WebUI` does not support **SSL** natively.
 
 ---
 
