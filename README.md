@@ -9,6 +9,7 @@ Ensure you have the following installed:
 
   - [`Docker`](https://docs.docker.com/get-docker/)
   - [`Docker Compose`](https://docs.docker.com/compose/install/)
+  - [`Nvidia Container Toolkit`](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 
 ---
 
